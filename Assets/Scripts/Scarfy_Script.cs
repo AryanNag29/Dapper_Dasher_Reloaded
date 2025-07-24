@@ -63,11 +63,13 @@ public class Scarfy_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //scarfy jump
         if (UnityEngine.Input.GetKey(KeyCode.Space) && isGrounded())
         {
             ScarfyRigigBody.linearVelocity = Vector2.up * jumpVelocity;    //scarfy goes up in y axix when pressing space key
         }
 
+        //scarfy dash
         if (UnityEngine.Input.GetKey(KeyCode.V))
         {
             ScarfyRigigBody.gravityScale = downVelocity;
