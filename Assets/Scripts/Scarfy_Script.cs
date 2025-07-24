@@ -2,6 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class Scarfy_Script : MonoBehaviour
 {   
@@ -15,6 +16,8 @@ public class Scarfy_Script : MonoBehaviour
     public float castDistance;
     public LayerMask groundLayer;
     public float jumpVelocity = 7.0f;
+    private float downVelocity = 20.0f;
+    private float normalGravity = 1f;
 
     //functions of main scarfy
 
@@ -34,6 +37,7 @@ public class Scarfy_Script : MonoBehaviour
     {
         Gizmos.DrawWireCube(transform.position - transform.up*castDistance, boxSize);
     }
+    
 
 
     //not very useful
@@ -59,10 +63,20 @@ public class Scarfy_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space) && isGrounded())
+        if (UnityEngine.Input.GetKey(KeyCode.Space) && isGrounded())
         {
             ScarfyRigigBody.linearVelocity = Vector2.up * jumpVelocity;    //scarfy goes up in y axix when pressing space key
         }
+
+        if (UnityEngine.Input.GetKey(KeyCode.V))
+        {
+            ScarfyRigigBody.gravityScale = downVelocity;
+        }
+        else
+        {
+            ScarfyRigigBody.gravityScale = normalGravity;
+        }
+
     }
 }
 

@@ -10,7 +10,8 @@ public class Pipe_spawner_Script : MonoBehaviour
     //variables
 
     //spawnrate
-    public float spawnRate = 2f;
+    private float spawnRate1 = 1.5f;
+    private float spawnRate2 = 3f;
     public float timer = 0.0f;
 
     //spawn at reandom distance at X
@@ -24,7 +25,6 @@ public class Pipe_spawner_Script : MonoBehaviour
 
     //functions
 
-
     //spawnPipe at random X
     private void spawnPipe()
     {
@@ -32,6 +32,12 @@ public class Pipe_spawner_Script : MonoBehaviour
         Vector3 SpawnPosition = new Vector3(randomX, spawnRangeY, spawnRangeZ);
         Instantiate(nebula, SpawnPosition, transform.rotation);
     }
+
+    private float SpawnRate()
+    {
+        return UnityEngine.Random.Range(spawnRate1, spawnRate2);
+    }
+
 
 
 
@@ -46,7 +52,7 @@ public class Pipe_spawner_Script : MonoBehaviour
     {   
         
         //spawn rate for the time
-        if (timer < spawnRate)
+        if (timer < SpawnRate())
         {
             timer = timer + Time.deltaTime;
         }
