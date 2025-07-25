@@ -9,6 +9,8 @@ public class Scarfy_Script : MonoBehaviour
     //SearializeField
     [SerializeField] private Rigidbody2D ScarfyRigigBody;
     [SerializeField] private BoxCollider2D ScarfyBoxCollider;
+    [SerializeField] private Animator ScarfyAnimator;
+    [SerializeField] private SpriteRenderer ScarfyRanderer;
 
     //variables
     public bool isOnGround;
@@ -57,12 +59,15 @@ public class Scarfy_Script : MonoBehaviour
     void Start()
     {
         ScarfyRigigBody = GetComponent<Rigidbody2D>();
+        ScarfyAnimator = GetComponent<Animator>();
+        ScarfyRanderer = GetComponent<SpriteRenderer>();
         Debug.Log(transform);
     }
 
     // Update is called once per frame
     void Update()
     {
+
         //scarfy jump
         if (UnityEngine.Input.GetKey(KeyCode.Space) && isGrounded())
         {
@@ -78,6 +83,18 @@ public class Scarfy_Script : MonoBehaviour
         {
             ScarfyRigigBody.gravityScale = normalGravity;
         }
+
+        //when scarfy is not on ground animation will pause 
+        if (!isGrounded())
+        {
+            ScarfyAnimator.speed = 0;
+        }
+        else
+        {
+            ScarfyAnimator.speed = 1;
+        }
+        
+
 
     }
 }
