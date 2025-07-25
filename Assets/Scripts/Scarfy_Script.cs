@@ -13,18 +13,18 @@ public class Scarfy_Script : MonoBehaviour
     [SerializeField] private SpriteRenderer ScarfyRanderer;
 
     //variables
-    public bool isOnGround;
-    public Vector2 boxSize;
-    public float castDistance;
-    public LayerMask groundLayer;
-    public float jumpVelocity = 7.0f;
+    private bool isOnGround;
+    private Vector2 boxSize;
+    private float castDistance;
+    private LayerMask groundLayer;
+    private float jumpVelocity = 7.0f;
     private float downVelocity = 20.0f;
     private float normalGravity = 1f;
 
     //functions of main scarfy
 
     //this is the raycast method to do ground check
-    public bool isGrounded()
+    private bool isGrounded()
     {
         if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, castDistance, groundLayer))
         {
@@ -35,7 +35,7 @@ public class Scarfy_Script : MonoBehaviour
             return false;
         }
     }
-    public void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position - transform.up*castDistance, boxSize);
     }
