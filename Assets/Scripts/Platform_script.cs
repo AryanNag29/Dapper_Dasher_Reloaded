@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Platform_script : MonoBehaviour
 {
-    [SerializeField] private BoxCollider2D PlatformCollider;
+    [SerializeField] public BoxCollider2D PlatformCollider;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

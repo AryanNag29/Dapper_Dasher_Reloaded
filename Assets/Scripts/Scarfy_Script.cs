@@ -14,9 +14,9 @@ public class Scarfy_Script : MonoBehaviour
 
     //variables
     private bool isOnGround;
-    private Vector2 boxSize;
-    private float castDistance;
-    private LayerMask groundLayer;
+    public Vector2 boxSize;
+    public float castDistance;
+    public LayerMask groundLayer;
     private float jumpVelocity = 7.0f;
     private float downVelocity = 20.0f;
     private float normalGravity = 1f;
