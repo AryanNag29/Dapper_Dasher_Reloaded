@@ -69,13 +69,13 @@ public class Scarfy_Script : MonoBehaviour
     {
 
         //scarfy jump
-        if (UnityEngine.Input.GetKey(KeyCode.Space) && isGrounded())
+        if (UnityEngine.Input.GetKey(KeyCode.Space) || UnityEngine.Input.GetKey(KeyCode.Mouse0) && isGrounded())
         {
             ScarfyRigigBody.linearVelocity = Vector2.up * jumpVelocity;    //scarfy goes up in y axix when pressing space key
         }
 
         //scarfy dash
-        if (UnityEngine.Input.GetKey(KeyCode.V))
+        if (UnityEngine.Input.GetKey(KeyCode.V) || UnityEngine.Input.GetKey(KeyCode.Mouse1) && !isGrounded())
         {
             ScarfyRigigBody.gravityScale = downVelocity;
         }
