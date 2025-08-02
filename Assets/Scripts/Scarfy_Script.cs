@@ -17,7 +17,7 @@ public class Scarfy_Script : MonoBehaviour
     public Vector2 boxSize;
     public float castDistance;
     public LayerMask groundLayer;
-    private float jumpVelocity = 7.0f;
+    public float jumpVelocity = 1f;
     private float downVelocity = 20.0f;
     private float normalGravity = 1f;
 
@@ -71,7 +71,7 @@ public class Scarfy_Script : MonoBehaviour
         //scarfy jump
         if (UnityEngine.Input.GetKey(KeyCode.Space) && isGrounded() || UnityEngine.Input.GetKey(KeyCode.Mouse0) && isGrounded())
         {
-            ScarfyRigigBody.linearVelocity = Vector2.up * jumpVelocity;    //scarfy goes up in y axix when pressing space key
+            ScarfyRigigBody.AddForce(Vector2.up * jumpVelocity, ForceMode2D.Impulse);    //scarfy goes up in y axix when pressing space key
         }
 
         //scarfy dash
