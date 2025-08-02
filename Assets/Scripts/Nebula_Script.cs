@@ -6,7 +6,7 @@ public class Nebula_Script : MonoBehaviour
     [SerializeField] private BoxCollider2D nebulaBoxCollider;
 
     //variables
-    private int nebulaMovement = 1; 
+    private int nebulaMovement = 10; 
     private float deadZone = -12.1f;
 
     

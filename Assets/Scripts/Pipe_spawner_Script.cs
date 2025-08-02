@@ -10,7 +10,7 @@ public class Pipe_spawner_Script : MonoBehaviour
     //variables
 
     //spawnrate
-    private float spawnRate1 = 1.5f;
+    private float spawnRate1 = 1f;
     private float spawnRate2 = 3f;
     private float timer = 0.0f;
 

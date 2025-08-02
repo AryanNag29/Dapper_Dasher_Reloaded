@@ -25,7 +25,7 @@ public class Scarfy_Script : MonoBehaviour
     private float gravityScale = 1f;
     private float downVelocity = 20.0f;
     private float normalGravity = 1f;
-    private Collider2D[] result = new Collider2D[1];
+
 
     //functions of main scarfy
 
@@ -64,7 +64,7 @@ public class Scarfy_Script : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        //it gets components
         ScarfyAnimator = GetComponent<Animator>();
         ScarfyRanderer = GetComponent<SpriteRenderer>();
         
@@ -78,22 +78,19 @@ public class Scarfy_Script : MonoBehaviour
         {
             velocity = 0;
             //fix the late realise of the ground check snap back it up 
-            Vector2 surface = Physics2D.ClosestPoint(transform.position, ScarfyBoxCollider) + Vector2.up * 0.1f;
+            Vector2 surface = Physics2D.ClosestPoint(transform.position, ScarfyBoxCollider);
             transform.position = new Vector3(transform.position.x, surface.y, transform.position.z);
             
         }
-
-
-        velocity += Physics2D.gravity.y * gravityScale * Time.deltaTime;
-
-
+        //add gravity for the scarfy and also multiplay gravity two time because gravity is not a constant value it change and gravity is 9.8m/s*2
+        velocity += Physics2D.gravity.y * gravityScale * Time.deltaTime; // one time here 
         //scarfy jump
         if (UnityEngine.Input.GetKey(KeyCode.Space) && isGrounded() || UnityEngine.Input.GetKey(KeyCode.Mouse0) && isGrounded())
         {
             velocity = jump;    //scarfy goes up in y axix when pressing space key
             
         }
-        transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
+        transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime); // second time here
 
         //scarfy dash
         /*if (UnityEngine.Input.GetKey(KeyCode.V) && !isGrounded() || UnityEngine.Input.GetKey(KeyCode.Mouse1) && !isGrounded())
