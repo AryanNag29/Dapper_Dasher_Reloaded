@@ -1,25 +1,31 @@
 using System;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Windows;
 
 public class Scarfy_Script : MonoBehaviour
-{   
+{
     //SearializeField
-    [SerializeField] private Rigidbody2D ScarfyRigigBody;
+    [Header("SearializeField")]
     [SerializeField] private BoxCollider2D ScarfyBoxCollider;
     [SerializeField] private Animator ScarfyAnimator;
     [SerializeField] private SpriteRenderer ScarfyRanderer;
 
     //variables
+    public float jumpCap = -0.16f;
     private bool isOnGround;
     public Vector2 boxSize;
     public float castDistance;
     public LayerMask groundLayer;
-    public float jumpVelocity = 1f;
+    [SerializeField] private float jump = 20f;
+    private float velocity;
+    private float gravityScale = 1f;
     private float downVelocity = 20.0f;
     private float normalGravity = 1f;
+    private Collider2D[] result = new Collider2D[1];
 
     //functions of main scarfy
 
@@ -37,9 +43,9 @@ public class Scarfy_Script : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position - transform.up*castDistance, boxSize);
+        Gizmos.DrawWireCube(transform.position - transform.up * castDistance, boxSize);
     }
-    
+
 
 
     //not very useful
@@ -58,31 +64,46 @@ public class Scarfy_Script : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        ScarfyRigigBody = GetComponent<Rigidbody2D>();
+
         ScarfyAnimator = GetComponent<Animator>();
         ScarfyRanderer = GetComponent<SpriteRenderer>();
-        Debug.Log(transform);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        //turn off gravity when is grounded is true
+        if (isGrounded() == true && velocity < 0)
+        {
+            velocity = 0;
+            //fix the late realise of the ground check snap back it up 
+            Vector2 surface = Physics2D.ClosestPoint(transform.position, ScarfyBoxCollider) + Vector2.up * 0.1f;
+            transform.position = new Vector3(transform.position.x, surface.y, transform.position.z);
+            
+        }
+
+
+        velocity += Physics2D.gravity.y * gravityScale * Time.deltaTime;
+
 
         //scarfy jump
         if (UnityEngine.Input.GetKey(KeyCode.Space) && isGrounded() || UnityEngine.Input.GetKey(KeyCode.Mouse0) && isGrounded())
         {
-            ScarfyRigigBody.AddForce(Vector2.up * jumpVelocity, ForceMode2D.Impulse);    //scarfy goes up in y axix when pressing space key
+            velocity = jump;    //scarfy goes up in y axix when pressing space key
+            
         }
+        transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
 
         //scarfy dash
-        if (UnityEngine.Input.GetKey(KeyCode.V) && !isGrounded() || UnityEngine.Input.GetKey(KeyCode.Mouse1) && !isGrounded())
+        /*if (UnityEngine.Input.GetKey(KeyCode.V) && !isGrounded() || UnityEngine.Input.GetKey(KeyCode.Mouse1) && !isGrounded())
         {
             ScarfyRigigBody.gravityScale = downVelocity;
         }
         else
         {
             ScarfyRigigBody.gravityScale = normalGravity;
-        }
+        }*/
 
         //when scarfy is not on ground animation will pause 
         if (!isGrounded())
@@ -93,7 +114,7 @@ public class Scarfy_Script : MonoBehaviour
         {
             ScarfyAnimator.speed = 1;
         }
-        
+
 
 
     }
