@@ -2,9 +2,17 @@ using UnityEngine;
 
 public class Nebula_Script : MonoBehaviour
 {
+    //searializeFields
     [SerializeField] private BoxCollider2D nebulaBoxCollider;
-    public int nebulaMovement = 5;
+
+    //variables
+    private int nebulaMovement = 1; 
     private float deadZone = -12.1f;
+
+    
+    //functions
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,12 +21,16 @@ public class Nebula_Script : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        //more the nebula to the left
         transform.position = transform.position + Vector3.left * nebulaMovement * Time.deltaTime;
 
+        //destroy gameObject after it reach dead zone
         if (transform.position.x < deadZone)
         {
             Destroy(gameObject);
         }
+
+
     }
 }
