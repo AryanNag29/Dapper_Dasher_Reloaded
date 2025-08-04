@@ -25,7 +25,7 @@ public class backBuildingScript : MonoBehaviour
 
     }
     // Update is called once per frame
-    void FixedUpdate()
+    void LateUpdate()
     {
         //make it scroll with some speed 
         transform.position += Vector3.left * scrollSpeed * Time.deltaTime;
