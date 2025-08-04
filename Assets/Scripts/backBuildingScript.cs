@@ -10,6 +10,7 @@ public class backBuildingScript : MonoBehaviour
     private float imageWidth;
     Vector3 temp;
 
+    //if the background jitter change the x tiled of sprite renderer it will have some effect
 
     void Start()
     {
