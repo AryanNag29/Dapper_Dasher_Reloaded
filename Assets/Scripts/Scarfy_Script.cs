@@ -25,6 +25,7 @@ public class Scarfy_Script : MonoBehaviour
     private float gravityScale = 1f;
     private float downVelocity = 20.0f;
     private float normalGravity = 1f;
+    private float flooreHeight = 0.00001f;
 
 
     //functions of main scarfy
@@ -73,17 +74,19 @@ public class Scarfy_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //add gravity for the scarfy and also multiplay gravity two time because gravity is not a constant value it change and gravity is 9.8m/s*2
+        velocity += Physics2D.gravity.y * gravityScale * Time.deltaTime; // one time here 
+
         //turn off gravity when is grounded is true
         if (isGrounded() == true && velocity < 0)
         {
             velocity = 0;
             //fix the late realise of the ground check snap back it up 
-            Vector2 surface = Physics2D.ClosestPoint(transform.position, ScarfyBoxCollider);
+            Vector2 surface = Physics2D.ClosestPoint(transform.position, ScarfyBoxCollider) + Vector2.up * flooreHeight;
             transform.position = new Vector3(transform.position.x, surface.y, transform.position.z);
-            
+
         }
-        //add gravity for the scarfy and also multiplay gravity two time because gravity is not a constant value it change and gravity is 9.8m/s*2
-        velocity += Physics2D.gravity.y * gravityScale * Time.deltaTime; // one time here 
+        
         //scarfy jump
         if (UnityEngine.Input.GetKey(KeyCode.Space) && isGrounded() || UnityEngine.Input.GetKey(KeyCode.Mouse0) && isGrounded())
         {
