@@ -11,7 +11,7 @@ public class backBuildingScript : MonoBehaviour
     Vector3 temp;
 
     //if the background jitter change the x tiled of sprite renderer it will have some effect.
-    
+
 
     void Start()
     {
@@ -27,7 +27,7 @@ public class backBuildingScript : MonoBehaviour
 
     }
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
         //make it scroll with some speed 
         transform.position += Vector3.left * scrollSpeed * Time.deltaTime;
