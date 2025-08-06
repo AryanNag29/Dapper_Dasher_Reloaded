@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -14,7 +15,9 @@ public class Scarfy_Script : MonoBehaviour
     [SerializeField] private Animator ScarfyAnimator;
     [SerializeField] private SpriteRenderer ScarfyRanderer;
 
+
     //variables
+    public LogicManager logic;
     public float jumpCap = -0.16f;
     public Vector2 boxSize;
     public float castDistance;
@@ -62,6 +65,9 @@ public class Scarfy_Script : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //access the logic script
+        logic = GameObject.FindWithTag("Logic").GetComponent<LogicManager>();
+
         //it gets components
         ScarfyAnimator = GetComponent<Animator>();
         ScarfyRanderer = GetComponent<SpriteRenderer>();
@@ -83,12 +89,12 @@ public class Scarfy_Script : MonoBehaviour
             transform.position = new Vector3(transform.position.x, surface.y, transform.position.z);
 
         }
-        
+
         //scarfy jump
         if (UnityEngine.Input.GetKey(KeyCode.Space) && isGrounded())
         {
             velocity = jump;    //scarfy goes up in y axix when pressing space key
-            
+
         }
         transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime); // second time here
 
@@ -110,6 +116,11 @@ public class Scarfy_Script : MonoBehaviour
         else
         {
             ScarfyAnimator.speed = 1;
+        }
+        
+        void OnCollisionEnter2D(Collision2D other)
+        {
+                logic.gameOver();
         }
 
 

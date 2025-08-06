@@ -6,10 +6,9 @@ public class LogicManager : MonoBehaviour
 {
     public int playerScore;
     public bool isGameOver = false;
-    
+
     [SerializeField] private Text scoreText; //reference to the text under ui
-    [SerializeField] private Text GameOverText;
-    [SerializeField] private GameObject gameOver;
+    [SerializeField] private GameObject gameOverScreen;
 
 
     //functions
@@ -25,6 +24,11 @@ public class LogicManager : MonoBehaviour
     {
         Debug.Log("restart");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void gameOver()
+    {
+        gameOverScreen.SetActive(true);
     }
     
 }
