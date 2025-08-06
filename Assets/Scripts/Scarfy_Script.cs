@@ -16,15 +16,12 @@ public class Scarfy_Script : MonoBehaviour
 
     //variables
     public float jumpCap = -0.16f;
-    private bool isOnGround;
     public Vector2 boxSize;
     public float castDistance;
     public LayerMask groundLayer;
     [SerializeField] private float jump = 20f;
     private float velocity;
     private float gravityScale = 1f;
-    private float downVelocity = 20.0f;
-    private float normalGravity = 1f;
     private float flooreHeight = 0.00001f;
 
 

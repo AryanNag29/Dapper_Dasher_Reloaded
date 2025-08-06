@@ -9,9 +9,9 @@ public class LogicManager : MonoBehaviour
     //functions
     [ContextMenu("Increase Score")] //add another context menu to run anything below it like the addScore function
     //addScore to he UI
-    public void addScore()
+    public void addScore(int scoreToAdd)
     {
-        playerScore += 1;
+        playerScore += scoreToAdd;
         scoreText.text = playerScore.ToString();
     }
 }

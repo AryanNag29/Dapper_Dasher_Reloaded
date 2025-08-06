@@ -13,10 +13,13 @@ public class Scorehit : MonoBehaviour
     void Update()
     {
 
-    }
-    
-    private void OnTriggerEnter2D(Collider2D other)
+    }    
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        logic.addScore();
+        if (collision.gameObject.layer == 6)
+        {
+            logic.addScore(1);
+        }
+        
     }
 }
