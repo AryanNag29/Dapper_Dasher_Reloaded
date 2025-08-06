@@ -82,6 +82,7 @@ public class Scarfy_Script : MonoBehaviour
         ScarfyAnimator = GetComponent<Animator>();
         ScarfyRanderer = GetComponent<SpriteRenderer>();
         scarfyObject = GetComponent<GameObject>();
+        
 
     }
 
