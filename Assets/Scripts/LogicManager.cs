@@ -19,17 +19,11 @@ public class LogicManager : MonoBehaviour
         playerScore += scoreToAdd;
         scoreText.text = playerScore.ToString();
     }
-    [ContextMenu("GameOver")]
-    public void displayGameOver()
+    //To reset the game whenever you hit playAgain
+    public void restartGame()
     {
-        if (isGameOver)
-        {
-            GameOverText.text = "GameOver";
-        }
-        else
-        {
-            GameOverText.text = "";
-        }
+        Debug.Log("restart");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
 }

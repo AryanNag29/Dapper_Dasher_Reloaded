@@ -85,7 +85,7 @@ public class Scarfy_Script : MonoBehaviour
         }
         
         //scarfy jump
-        if (UnityEngine.Input.GetKey(KeyCode.Space) && isGrounded() || UnityEngine.Input.GetKey(KeyCode.Mouse0) && isGrounded())
+        if (UnityEngine.Input.GetKey(KeyCode.Space) && isGrounded())
         {
             velocity = jump;    //scarfy goes up in y axix when pressing space key
             
