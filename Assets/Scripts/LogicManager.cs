@@ -19,7 +19,7 @@ public class LogicManager : MonoBehaviour
         playerScore += scoreToAdd;
         scoreText.text = playerScore.ToString();
     }
-    //To reset the game whenever you hit playAgain
+    //To reset the game whenever you hit playAgain(make sure in ui you have event system)
     public void restartGame()
     {
         Debug.Log("restart");
