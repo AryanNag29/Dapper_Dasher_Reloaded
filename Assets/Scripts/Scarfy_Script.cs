@@ -14,9 +14,11 @@ public class Scarfy_Script : MonoBehaviour
     [SerializeField] private BoxCollider2D ScarfyBoxCollider;
     [SerializeField] private Animator ScarfyAnimator;
     [SerializeField] private SpriteRenderer ScarfyRanderer;
+    [SerializeField] private GameObject scarfyObject;
 
 
     //variables
+    public bool IsgameOver;
     public LogicManager logic;
     public float jumpCap = -0.16f;
     public Vector2 boxSize;
@@ -61,6 +63,14 @@ public class Scarfy_Script : MonoBehaviour
             isOnGround = false;
         }
     }*/
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 6)
+        {
+            logic.gameOver();
+            IsgameOver = true;
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -71,7 +81,8 @@ public class Scarfy_Script : MonoBehaviour
         //it gets components
         ScarfyAnimator = GetComponent<Animator>();
         ScarfyRanderer = GetComponent<SpriteRenderer>();
-        
+        scarfyObject = GetComponent<GameObject>();
+
     }
 
     // Update is called once per frame
@@ -117,15 +128,15 @@ public class Scarfy_Script : MonoBehaviour
         {
             ScarfyAnimator.speed = 1;
         }
-        
-        void OnCollisionEnter2D(Collision2D other)
+        if (IsgameOver)
         {
-                logic.gameOver();
+            Destroy(scarfyObject);
         }
 
-
-
     }
+
+
 }
+
 
 
