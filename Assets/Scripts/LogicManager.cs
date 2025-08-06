@@ -9,6 +9,7 @@ public class LogicManager : MonoBehaviour
     
     [SerializeField] private Text scoreText; //reference to the text under ui
     [SerializeField] private Text GameOverText;
+    [SerializeField] private GameObject gameOver;
 
 
     //functions
