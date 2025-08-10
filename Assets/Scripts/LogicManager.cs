@@ -17,7 +17,7 @@ public class LogicManager : MonoBehaviour
     public void addScore(int scoreToAdd)
     {
         playerScore += scoreToAdd;
-        scoreText.text = playerScore.ToString();
+        scoreText.text = playerScore.ToString(); // we use to string keyword to convert int into string;
     }
     //To reset the game whenever you hit playAgain(make sure in ui you have event system)
     public void restartGame()
