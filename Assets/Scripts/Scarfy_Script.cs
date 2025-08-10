@@ -18,7 +18,7 @@ public class Scarfy_Script : MonoBehaviour
 
 
     //variables
-    public bool IsgameOver;
+    public bool IsgameOver = true;
     public LogicManager logic;
     public float jumpCap = -0.16f;
     public Vector2 boxSize;
@@ -44,26 +44,13 @@ public class Scarfy_Script : MonoBehaviour
             return false;
         }
     }
-    
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position - transform.up * castDistance, boxSize);
     }
 
 
-
-    //not very useful
-    /*private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            isOnGround = true;
-        }
-        else
-        {
-            isOnGround = false;
-        }
-    }*/
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 6)
@@ -83,8 +70,7 @@ public class Scarfy_Script : MonoBehaviour
         ScarfyAnimator = GetComponent<Animator>();
         ScarfyRanderer = GetComponent<SpriteRenderer>();
         scarfyObject = GetComponent<GameObject>();
-        
-
+    
     }
 
     // Update is called once per frame
@@ -111,17 +97,6 @@ public class Scarfy_Script : MonoBehaviour
         }
         transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime); // second time here
 
-        //scarfy dash
-        /*if (UnityEngine.Input.GetKey(KeyCode.V) && !isGrounded() || UnityEngine.Input.GetKey(KeyCode.Mouse1) && !isGrounded())
-        {
-            ScarfyRigigBody.gravityScale = downVelocity;
-        }
-        else
-        {
-            ScarfyRigigBody.gravityScale = normalGravity;
-        }*/
-
-        //when scarfy is not on ground animation will pause 
         if (!isGrounded())
         {
             ScarfyAnimator.speed = 0;
