@@ -18,7 +18,7 @@ public class Scarfy_Script : MonoBehaviour
 
 
     //variables
-    public bool IsgameOver = true;
+    public bool isScarfyAlive = true;
     public LogicManager logic;
     public float jumpCap = -0.16f;
     public Vector2 boxSize;
@@ -55,10 +55,13 @@ public class Scarfy_Script : MonoBehaviour
     {
         if (collision.gameObject.layer == 6)
         {
+
             logic.gameOver();
-            IsgameOver = true;
+            isScarfyAlive = false;
+            
         }
     }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -70,7 +73,7 @@ public class Scarfy_Script : MonoBehaviour
         ScarfyAnimator = GetComponent<Animator>();
         ScarfyRanderer = GetComponent<SpriteRenderer>();
         scarfyObject = GetComponent<GameObject>();
-    
+
     }
 
     // Update is called once per frame
@@ -90,7 +93,7 @@ public class Scarfy_Script : MonoBehaviour
         }
 
         //scarfy jump
-        if (UnityEngine.Input.GetKey(KeyCode.Space) && isGrounded())
+        if (UnityEngine.Input.GetKey(KeyCode.Space) && isGrounded() && isScarfyAlive)
         {
             velocity = jump;    //scarfy goes up in y axix when pressing space key
 
@@ -105,14 +108,13 @@ public class Scarfy_Script : MonoBehaviour
         {
             ScarfyAnimator.speed = 1;
         }
-        if (IsgameOver)
+        if (!isScarfyAlive)
         {
-            Destroy(scarfyObject);
+            Destroy(gameObject);
         }
 
     }
-
-
+    
 }
 
 
