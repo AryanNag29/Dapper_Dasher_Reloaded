@@ -44,6 +44,7 @@ public class Scarfy_Script : MonoBehaviour
             return false;
         }
     }
+    
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position - transform.up * castDistance, boxSize);
