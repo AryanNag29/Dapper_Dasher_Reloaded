@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class LogicManager : MonoBehaviour
 {
     public int playerScore;
-    public bool isGameOver = false;
+
 
     [SerializeField] private Text scoreText; //reference to the text under ui
     [SerializeField] private GameObject gameOverScreen;

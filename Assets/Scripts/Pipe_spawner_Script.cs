@@ -6,6 +6,7 @@ public class Pipe_spawner_Script : MonoBehaviour
 {
     //SerializeField
     [SerializeField] private GameObject nebula;
+    public Scarfy_Script scarfy;
 
     //variables
 
@@ -44,12 +45,14 @@ public class Pipe_spawner_Script : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //access the logic script
+        scarfy = GameObject.FindWithTag("Player").GetComponent<Scarfy_Script>();
         spawnPipe();
     }
 
     // Update is called once per frame
     void Update()
-    {   
+    {
         //spawn rate for the time
         if (timer < SpawnRate())
         {
@@ -59,6 +62,11 @@ public class Pipe_spawner_Script : MonoBehaviour
         {
             spawnPipe();
             timer = 0.0f;
+        }
+
+        if (!scarfy.isScarfyAlive)
+        {
+            Destroy(gameObject);
         }
     }
 }
