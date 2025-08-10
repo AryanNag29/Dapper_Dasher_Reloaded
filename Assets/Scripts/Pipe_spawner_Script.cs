@@ -50,7 +50,6 @@ public class Pipe_spawner_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        
         //spawn rate for the time
         if (timer < SpawnRate())
         {
@@ -61,6 +60,5 @@ public class Pipe_spawner_Script : MonoBehaviour
             spawnPipe();
             timer = 0.0f;
         }
-        
     }
 }
