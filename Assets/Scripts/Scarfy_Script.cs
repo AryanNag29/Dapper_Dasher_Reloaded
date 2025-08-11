@@ -23,9 +23,9 @@ public class Scarfy_Script : MonoBehaviour
     public Vector2 boxSize;
     public float castDistance;
     public LayerMask groundLayer;
-    [SerializeField] private float jump = 20f;
+    [SerializeField] private float jump = 25f;
     private float velocity;
-    private float gravityScale = 1f;
+    private float gravityScale = 0.1f;
     private float flooreHeight = 0.00001f;
 
 
