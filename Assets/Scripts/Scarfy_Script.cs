@@ -23,10 +23,14 @@ public class Scarfy_Script : MonoBehaviour
     public Vector2 boxSize;
     public float castDistance;
     public LayerMask groundLayer;
-    [SerializeField] private float jump = 25f;
+    public float jumpStartTime;
+    private float jumpTime;
+    private bool isJumping;
+    private float jump = 10f;
     private float velocity;
-    private float gravityScale = 0.1f;
+    private float gravityScale = 1f;
     private float flooreHeight = 0.00001f;
+    
 
 
     //functions of main scarfy
@@ -92,10 +96,28 @@ public class Scarfy_Script : MonoBehaviour
         }
 
         //scarfy jump
-        if (UnityEngine.Input.GetKey(KeyCode.Space) && isGrounded() && isScarfyAlive)
+        if (UnityEngine.Input.GetKeyDown(KeyCode.Space) && isGrounded() && isScarfyAlive)
         {
+            isJumping = true;
+            jumpTime = jumpStartTime;
             velocity = jump;    //scarfy goes up in y axix when pressing space key
-
+        }
+        if (UnityEngine.Input.GetKeyDown(KeyCode.Space) && isJumping)
+        {
+            if (jumpTime > 0)
+            {
+                velocity = jump;
+                jumpTime -= Time.deltaTime;
+                transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
+            }
+            else
+            {
+                isJumping = false;
+            }
+        }
+        if (UnityEngine.Input.GetKeyUp(KeyCode.Space))
+        {
+            isJumping = false;
         }
         transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime); // second time here
 
