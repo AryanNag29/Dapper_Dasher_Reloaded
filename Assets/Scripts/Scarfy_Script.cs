@@ -20,7 +20,6 @@ public class Scarfy_Script : MonoBehaviour
     //variables
     public bool isScarfyAlive = true;
     public LogicManager logic;
-    public float jumpCap = -0.16f;
     public Vector2 boxSize;
     public float castDistance;
     public LayerMask groundLayer;

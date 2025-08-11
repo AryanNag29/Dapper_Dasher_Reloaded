@@ -23,7 +23,7 @@ public class LogicManager : MonoBehaviour
     //To reset the game whenever you hit playAgain(make sure in ui you have event system)
     public void restartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadSceneAsync(1);
     }
 
     public void gameOver()
