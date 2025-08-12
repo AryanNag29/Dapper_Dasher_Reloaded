@@ -26,7 +26,7 @@ public class Scarfy_Script : MonoBehaviour
     public float jumpStartTime;
     private float jumpTime;
     private bool isJumping;
-    private float jump = 10f;
+    private float jumpVelocity = 20f;
     private float velocity;
     private float gravityScale = 1f;
     private float flooreHeight = 0.00001f;
@@ -65,6 +65,11 @@ public class Scarfy_Script : MonoBehaviour
         }
     }
 
+    private void jump()
+    {
+        
+    }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -98,26 +103,11 @@ public class Scarfy_Script : MonoBehaviour
         //scarfy jump
         if (UnityEngine.Input.GetKeyDown(KeyCode.Space) && isGrounded() && isScarfyAlive)
         {
-            isJumping = true;
-            jumpTime = jumpStartTime;
-            velocity = jump;    //scarfy goes up in y axix when pressing space key
+            velocity = jumpVelocity;    //scarfy goes up in y axix when pressing space key
         }
-        if (UnityEngine.Input.GetKeyDown(KeyCode.Space) && isJumping)
+        if (UnityEngine.Input.GetKeyUp(KeyCode.Space) && !isGrounded() && isScarfyAlive)
         {
-            if (jumpTime > 0)
-            {
-                velocity = jump;
-                jumpTime -= Time.deltaTime;
-                transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
-            }
-            else
-            {
-                isJumping = false;
-            }
-        }
-        if (UnityEngine.Input.GetKeyUp(KeyCode.Space))
-        {
-            isJumping = false;
+            velocity = 0;
         }
         transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime); // second time here
 

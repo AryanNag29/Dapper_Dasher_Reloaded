@@ -7,7 +7,7 @@ public class Nebula_Script : MonoBehaviour
     public Scarfy_Script scarfy;
 
     //variables
-    private int nebulaMovement = 10; 
+    private int nebulaMovement = 13; 
     private float deadZone = -12.1f;
 
     
