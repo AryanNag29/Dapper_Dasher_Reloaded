@@ -27,6 +27,7 @@ public class Scarfy_Script : MonoBehaviour
     private float jumpTime;
     private bool isJumping;
     private float jumpVelocity = 20f;
+    private float jumpDivide = 2f;
     private float velocity;
     private float gravityScale = 1f;
     private float flooreHeight = 0.00001f;
@@ -107,7 +108,7 @@ public class Scarfy_Script : MonoBehaviour
         }
         if (UnityEngine.Input.GetKeyUp(KeyCode.Space) && !isGrounded() && isScarfyAlive)
         {
-            velocity = 0;
+            velocity /= jumpDivide ;
         }
         transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime); // second time here
 
