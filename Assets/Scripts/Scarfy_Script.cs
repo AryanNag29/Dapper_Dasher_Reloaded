@@ -133,7 +133,6 @@ public class Scarfy_Script : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
     
 }
