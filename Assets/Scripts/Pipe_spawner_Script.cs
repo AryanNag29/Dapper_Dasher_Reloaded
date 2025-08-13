@@ -12,7 +12,7 @@ public class Pipe_spawner_Script : MonoBehaviour
 
     //spawnrate
     private float spawnRate1 = 1f;
-    private float spawnRate2 = 3f;
+    private float spawnRate2 = 6f;
     private float timer = 0.0f;
 
     //spawn at reandom distance at X
