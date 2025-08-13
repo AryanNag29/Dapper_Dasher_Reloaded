@@ -30,5 +30,10 @@ public class LogicManager : MonoBehaviour
     {
         gameOverScreen.SetActive(true);
     }
+
+    public void quit()
+    {
+        Application.Quit();
+    }
     
 }

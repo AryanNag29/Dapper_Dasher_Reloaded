@@ -17,7 +17,7 @@ public class Pipe_spawner_Script : MonoBehaviour
 
     //spawn at reandom distance at X
     private float spawnRangeX1 = 2f;
-    private float spawnRangeX2 = 11f;
+    private float spawnRangeX2 = 8f;
     private float spawnRangeY = -0.03f;
     private float spawnRangeZ = 0f;
 
