@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public audioManager audio;
+    public audioManager audios;
     public void PlayGame()
     {
         SceneManager.LoadSceneAsync(1);
@@ -14,8 +14,8 @@ public class MainMenu : MonoBehaviour
     }
     void Start()
     {
-        audio = GameObject.FindGameObjectWithTag("Audio").GetComponent<audioManager>();
-        audio.musicSource.clip = audio.mainMenu;
-        audio.musicSource.Play();
+        audios = GameObject.FindGameObjectWithTag("Audio").GetComponent<audioManager>();
+        audios.musicSource.clip = audios.mainMenu;
+        audios.musicSource.Play();
     }
 }

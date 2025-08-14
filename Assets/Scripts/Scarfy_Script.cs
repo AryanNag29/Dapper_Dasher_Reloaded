@@ -20,7 +20,7 @@ public class Scarfy_Script : MonoBehaviour
     //variables
     public bool isScarfyAlive = true;
     public LogicManager logic;
-    public audioManager audio;
+    public audioManager audios;
     public Vector2 boxSize;
     public float castDistance;
     public LayerMask groundLayer;
@@ -73,7 +73,7 @@ public class Scarfy_Script : MonoBehaviour
     {
         //access the logic script
         logic = GameObject.FindWithTag("Logic").GetComponent<LogicManager>();
-        audio = GameObject.FindWithTag("Audio").GetComponent<audioManager>();
+        audios = GameObject.FindWithTag("Audio").GetComponent<audioManager>();
 
         //it gets components
         ScarfyAnimator = GetComponent<Animator>();
@@ -83,8 +83,8 @@ public class Scarfy_Script : MonoBehaviour
         //Audio conditon
         if (isScarfyAlive)
         {
-            audio.musicSource.clip = audio.beforeDeath;
-            audio.musicSource.Play();
+            audios.musicSource.clip = audios.beforeDeath;
+            audios.musicSource.Play();
         }
     }
 
@@ -130,8 +130,8 @@ public class Scarfy_Script : MonoBehaviour
 
         if (!isScarfyAlive)
         {
-            audio.musicSource.clip = audio.afterDeath;
-            audio.musicSource.Play();
+            audios.musicSource.clip = audios.afterDeath;
+            audios.musicSource.Play();
         }
 
     }
