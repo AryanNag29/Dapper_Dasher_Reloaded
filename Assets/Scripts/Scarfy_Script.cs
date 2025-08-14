@@ -32,7 +32,6 @@ public class Scarfy_Script : MonoBehaviour
     private float velocity;
     private float gravityScale = 1f;
     private float flooreHeight = 0.00001f;
-    private bool beforeDeathMusic = false;
 
 
 
@@ -67,10 +66,6 @@ public class Scarfy_Script : MonoBehaviour
         }
     }
 
-    private void jump()
-    {
-
-    }
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

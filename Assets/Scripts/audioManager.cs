@@ -9,8 +9,6 @@ public class audioManager : MonoBehaviour
     [Header("Audio Clip")]
     public AudioClip beforeDeath;
     public AudioClip afterDeath;
-    public AudioClip jumpEffect;
-    public AudioClip deathEffect;
-    public AudioClip walkEffect;
+    public AudioClip mainMenu;
 
 }
