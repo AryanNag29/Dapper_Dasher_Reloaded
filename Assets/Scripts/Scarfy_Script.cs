@@ -133,7 +133,6 @@ public class Scarfy_Script : MonoBehaviour
             audios.musicSource.clip = audios.afterDeath;
             audios.musicSource.Play();
         }
-
     }
     }
 
