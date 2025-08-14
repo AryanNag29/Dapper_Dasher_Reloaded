@@ -3,8 +3,8 @@ using UnityEngine;
 public class audioManager : MonoBehaviour
 {
     [Header("Audio Source")]
-    [SerializeField] private AudioSource musicSource;
-    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] public AudioSource musicSource;
+    [SerializeField] public AudioSource sfxSource;
 
     [Header("Audio Clip")]
     public AudioClip beforeDeath;

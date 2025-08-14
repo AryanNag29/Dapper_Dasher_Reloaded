@@ -20,6 +20,7 @@ public class Scarfy_Script : MonoBehaviour
     //variables
     public bool isScarfyAlive = true;
     public LogicManager logic;
+    public audioManager audio;
     public Vector2 boxSize;
     public float castDistance;
     public LayerMask groundLayer;
@@ -31,7 +32,8 @@ public class Scarfy_Script : MonoBehaviour
     private float velocity;
     private float gravityScale = 1f;
     private float flooreHeight = 0.00001f;
-    
+    private bool beforeDeathMusic = false;
+
 
 
     //functions of main scarfy
@@ -62,13 +64,12 @@ public class Scarfy_Script : MonoBehaviour
 
             logic.gameOver();
             isScarfyAlive = false;
-            
         }
     }
 
     private void jump()
     {
-        
+
     }
 
 
@@ -77,12 +78,19 @@ public class Scarfy_Script : MonoBehaviour
     {
         //access the logic script
         logic = GameObject.FindWithTag("Logic").GetComponent<LogicManager>();
+        audio = GameObject.FindWithTag("Audio").GetComponent<audioManager>();
 
         //it gets components
         ScarfyAnimator = GetComponent<Animator>();
         ScarfyRanderer = GetComponent<SpriteRenderer>();
         scarfyObject = GetComponent<GameObject>();
 
+        //Audio conditon
+        if (isScarfyAlive)
+        {
+            audio.musicSource.clip = audio.beforeDeath;
+            audio.musicSource.Play();
+        }
     }
 
     // Update is called once per frame
@@ -108,7 +116,7 @@ public class Scarfy_Script : MonoBehaviour
         }
         if (UnityEngine.Input.GetKeyUp(KeyCode.Space) && !isGrounded() && isScarfyAlive)
         {
-            velocity /= jumpDivide ;
+            velocity /= jumpDivide;
         }
         transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime); // second time here
 
@@ -124,9 +132,15 @@ public class Scarfy_Script : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (!isScarfyAlive)
+        {
+            audio.musicSource.clip = audio.afterDeath;
+            audio.musicSource.Play();
+        }
+
     }
-    
-}
+    }
 
 
 
