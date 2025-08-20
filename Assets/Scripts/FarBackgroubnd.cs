@@ -4,7 +4,7 @@ using UnityEngine;
 public class FarBackgroubnd : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private float scrollSpeed = 2f;
+    [SerializeField] private float scrollSpeed = 1f;
 
     private float imageWidth;
 
